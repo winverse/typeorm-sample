@@ -1,20 +1,9 @@
 import Koa from 'koa';
 import { ApolloServer, gql } from 'apollo-server-koa';
-
-import routes from './routes';
 import { createConnection } from 'typeorm';
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'hello world'
-  }
-};
+import routes from './routes';
+import schema from './graphql/schema';
 
 export default class App {
   app: Koa;
@@ -30,7 +19,7 @@ export default class App {
   }
   apollo = (): void => {
     const { app } = this;
-    const apollo = new ApolloServer({ typeDefs, resolvers });
+    const apollo = new ApolloServer({ schema });
     apollo.applyMiddleware({ app });
   }
   initializeDB = async ()  => {

@@ -1,7 +1,9 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint-config-airbnb", "tslint-config-prettier"
+        "tslint-config-airbnb", 
+        "tslint-config-prettier",
+        "tslint-eslint-rules"
     ],
     "rules": {
         "no-boolean-literal-compare": false,
@@ -9,6 +11,11 @@
         "import-name": false,
         "variable-name": false,
         "semicolon": [true, "always"],
-        "trailing-comma": true
+        "trailing-comma": true,
+        "object-curly-spacing": true,
+        "array-bracket-spacing": [
+            true,
+            "never"
+        ]
     }
 }
